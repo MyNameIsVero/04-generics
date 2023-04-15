@@ -1,5 +1,6 @@
 package ohm.softa.a04;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.Iterator;
 
 /**
@@ -34,6 +35,9 @@ public class SimpleListImpl<T> implements SimpleList<T> {
 		size++;
 	}
 
+	public void addDefault(){
+		//TODO
+	}
 	/**
 	 * @return size of the list
 	 */
@@ -97,7 +101,7 @@ public class SimpleListImpl<T> implements SimpleList<T> {
 	 */
 	private static class ListElement<X> {
 		private X item;
-		private ListElement next;
+		private ListElement<X> next;
 
 		ListElement(X item) {
 			this.item = item;
@@ -114,7 +118,7 @@ public class SimpleListImpl<T> implements SimpleList<T> {
 		/**
 		 * @return successor of the ListElement - may be NULL
 		 */
-		public ListElement getNext() {
+		public ListElement<X> getNext() {
 			return next;
 		}
 
@@ -122,7 +126,7 @@ public class SimpleListImpl<T> implements SimpleList<T> {
 		 * Sets the successor of the ListElement
 		 * @param next ListElement
 		 */
-		public void setNext(ListElement next) {
+		public void setNext(ListElement<X> next) {
 			this.next = next;
 		}
 	}

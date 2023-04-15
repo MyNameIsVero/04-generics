@@ -22,7 +22,7 @@ public class SimpleListTests {
 
 	@BeforeEach
 	void setup(){
-		testList = new SimpleListImpl<>();
+		testList = new SimpleListImpl<Integer>();
 
 		testList.add(1);
 		testList.add(2);
@@ -50,7 +50,7 @@ public class SimpleListTests {
 	@Test
 	void testFilterAnonymousClass(){
 		logger.info("Testing the filter possibilities by filtering for all elements greater 2");
-		SimpleList result = testList.filter(new SimpleFilter() {
+		SimpleList<Integer> result = testList.filter(new SimpleFilter() {
 			@Override
 			public boolean include(Object item) {
 				int current =(int) item;
@@ -67,7 +67,7 @@ public class SimpleListTests {
 	@Test
 	void testFilterLambda(){
 		logger.info("Testing the filter possibilities by filtering for all elements which are dividable by 2");
-		SimpleList result = testList.filter(o -> o % 2 == 0);
+		SimpleList<Integer> result = testList.filter(o -> o % 2 == 0);
 		for(Object o : result){
 			int i = (int)o;
 			assertTrue(i % 2 == 0);
